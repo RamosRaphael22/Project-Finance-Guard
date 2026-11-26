@@ -17,7 +17,7 @@
     <!-- Custom CSS -->
     <link
         rel="stylesheet"
-        href="../static/css/login.css"
+        href="{{url_for('static', filename='css/login.css')}}"
     >
 </head>
 
@@ -37,7 +37,7 @@
                 </p>
             </header>
 
-            <form class="login-form" method="POST">
+            <form class="login-form" method="POST" action="/login">
 
                 <div class="mb-3">
                     <label for="email" class="form-label">
