@@ -1,1 +1,24 @@
-teste
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Finance Guard</title>
+</head>
+
+<body>
+
+    <main>
+        <h1>Bem-vindo, {{ session['user_name'] }}!</h1>
+
+        <p>Nível de acesso: {{ session['access_level'] }}</p>
+
+        <a href="/logout" class="btn btn-danger btn-sm btn logout">Sair</a>
+    </main>
+
+</body>
+
+</html>

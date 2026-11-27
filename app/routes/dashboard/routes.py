@@ -6,4 +6,13 @@ dashboard = Blueprint('dashboard', __name__)
 def index():
     if 'user_id' not in session:
         return redirect(url_for('main.index'))
-    return render_template('dashboard/index.html')
+
+    name = session.get('user_name')
+    access_level = session.get('access_level')
+
+    return render_template('dashboard/index.html', name=name, access_level=access_level)
+
+@dashboard.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('main.index'))  
