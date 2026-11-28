@@ -28,6 +28,10 @@ def login():
     cursor.close()
     connection.close()
 
+    if user and user['is_active'] != 1:
+        flash('Usuario inativo, entre em contato com o suporte.', 'danger')
+        return redirect(url_for('main.index'))
+
     if user and bcrypt.check_password_hash(user['password_hash'], password):
         session['user_id'] = user['id']
         session['user_name'] = user['name']
@@ -35,5 +39,5 @@ def login():
 
         return redirect(url_for('dashboard.index'))
     else:
-        flash('Invalid email or password', 'danger')
+        flash('Email ou senha inválidos.', 'danger')
         return redirect(url_for('main.index'))
