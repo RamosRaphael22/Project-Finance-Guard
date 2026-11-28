@@ -6,6 +6,8 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
+    if 'user_id' in session:
+        return redirect(url_for('dashboard.index'))
     return render_template('index.html')
 
 @main.route('/login', methods=['POST'])
