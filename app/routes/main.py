@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, session, redirect, url_for
+from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 from app.database.connection import connect
 from app import bcrypt
 
@@ -35,4 +35,5 @@ def login():
 
         return redirect(url_for('dashboard.index'))
     else:
-        return 'Invalid email or password', 401
+        flash('Invalid email or password', 'danger')
+        return redirect(url_for('main.index'))
